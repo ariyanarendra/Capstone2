@@ -1,0 +1,126 @@
+.help-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(2, 23, 49, .68);
+}
+
+.help-modal__dialog {
+  width: min(100%, 560px);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  padding: 30px;
+  border-top: 5px solid var(--yellow);
+  background: white;
+  box-shadow: 0 24px 70px rgba(2, 23, 49, .3);
+  color: var(--ink);
+}
+
+.help-modal__dialog > header {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 15px;
+}
+
+.help-modal__icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.help-modal__dialog h2 {
+  margin: 5px 0 0;
+  font-size: 25px;
+}
+
+.help-modal__close {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  background: white;
+  color: #69737d;
+}
+
+.help-modal__dialog > p {
+  margin: 24px 0 15px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.help-modal__dialog ol {
+  margin: 0;
+  padding: 0;
+  counter-reset: help-step;
+  list-style: none;
+}
+
+.help-modal__dialog li {
+  position: relative;
+  min-height: 42px;
+  padding: 10px 0 13px 48px;
+  border-bottom: 1px solid var(--line);
+  color: #3f4953;
+  font-size: 13px;
+  line-height: 1.6;
+  counter-increment: help-step;
+}
+
+.help-modal__dialog li::before {
+  content: counter(help-step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 10px;
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.help-modal__dialog > footer {
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.help-modal__secondary,
+.help-modal__primary {
+  min-height: 45px;
+  padding: 0 19px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.help-modal__secondary {
+  border: 1px solid var(--line);
+  background: white;
+  color: #59636d;
+}
+
+.help-modal__primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-bottom: 3px solid var(--yellow);
+  background: var(--blue);
+  color: white;
+}
+
+@media (max-width: 560px) {
+  .help-modal { padding: 14px; }
+  .help-modal__dialog { padding: 23px 20px; }
+  .help-modal__dialog > header { grid-template-columns: 42px 1fr auto; gap: 10px; }
+  .help-modal__icon { width: 42px; height: 42px; }
+  .help-modal__dialog h2 { font-size: 21px; }
+  .help-modal__dialog > footer { flex-direction: column-reverse; }
+  .help-modal__secondary, .help-modal__primary { width: 100%; }
+}
